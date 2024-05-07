@@ -1,4 +1,5 @@
 import streamlit as st
+import pytrends
 from pytrends.request import TrendReq
 
 # Function for related queries analysis
