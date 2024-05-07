@@ -24,10 +24,10 @@ def main():
     
     if keyword:
         # Get the date to analyze
-        date_start = st.text_input("Enter the starting date you want to analyze (YYYY):")
+        date_start = st.text_input("Enter the starting date you want to analyze (YYYY-MM-DD):")
         
         if date_start:
-            date_end = st.text_input("Enter the ending date you want to analyze (YYYY):")
+            date_end = st.text_input("Enter the ending date you want to analyze (YYYY-MM-DD):")
             if date_end:
                 # Get the country to analyze
                 country = st.selectbox("Select the country to analyze", [
