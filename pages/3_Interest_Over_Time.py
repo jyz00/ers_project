@@ -11,9 +11,7 @@ def plot_trends(data, title):
 def forecast_trends(pytrends, keyword, date_start, date_end, country):
     pytrends.build_payload([keyword], timeframe=f'{date_start} {date_end}', geo=country)
     data = pytrends.interest_over_time()
-    max_value = data[keyword].max()
-    scaled_data = data[keyword] * max_value/100
-    plot_trends(scaled_data, f'Interest over Time for {keyword} between {date_start} and {date_end}')
+    plot_trends(data, f'Interest over Time for {keyword} between {date_start} and {date_end}')
 
 # Streamlit app
 def main():
