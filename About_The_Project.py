@@ -20,5 +20,7 @@ st.markdown(
         forums](https://discuss.streamlit.io)
     ### ¿Qué es Google Trends?
     Google Trends es una herramienta de Google que muestra cómo cambian las tendencias de búsqueda en Google con el tiempo. Puedes utilizar Google Trends para analizar la popularidad de ciertos términos de búsqueda en Google.
-"""
+    ### ¿Qué es Pytrends?
+    Pytrends es una librería de Python que permite interactuar con la API de Google Trends. Con Pytrends, puedes obtener datos de Google Trends y analizarlos en Python.
+    """
 )
