@@ -1,4 +1,7 @@
 import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+
 from pytrends.request import TrendReq as UTrendReq
 GET_METHOD='get'
 
@@ -29,63 +32,77 @@ class TrendReq(UTrendReq):
     def _get_data(self, url, method=GET_METHOD, trim_chars=0, **kwargs):
         return super()._get_data(url, method=GET_METHOD, trim_chars=trim_chars, headers=headers, **kwargs)
 
+# Create pytrends object
+pytrends = TrendReq(hl='en-US', tz=360)
+keyword = "remote work"
 
 # Function to plot trends
 def plot_trends(data, title):
     st.write(title)
     st.line_chart(data)
 
-# Function for forecasting trends
-def forecast_trends(pytrends, keyword, date_start, date_end, country):
-    pytrends.build_payload([keyword], timeframe=f'{date_start} {date_end}', geo=country)
+# Function to fetch top trending searches
+def fetch_top_trending(year, country):
+    pytrends.build_payload({}, cat=0, timeframe=f'{year}-01-01 {year}-12-31', geo=country)
+    top_trending = pytrends.trending_searches(pn='united_states')
+    return top_trending
+
+# 1. 地域分析
+def regional_interest():
+    pytrends.build_payload([keyword], timeframe='today 5-y')
+    by_region = pytrends.interest_by_region(resolution='COUNTRY', inc_low_vol=True, inc_geo_code=False)
+    top_regions = by_region.sort_values(by=keyword, ascending=False).head(10)
+    st.write("Top 10 Regions for Remote Work Interest:")
+    st.bar_chart(top_regions)
+
+# 2. 相关查询和主题分析
+def related_queries():
+    pytrends.build_payload([keyword], timeframe='today 5-y')
+    related = pytrends.related_queries()
+    top_queries = related[keyword]['top']
+    rising_queries = related[keyword]['rising']
+    st.write("Top related queries:")
+    st.write(top_queries)
+    st.write("Rising related queries:")
+    st.write(rising_queries)
+
+# 3. 时间序列预测 (使用简单的滚动平均作为示例)
+def forecast_trends():
+    pytrends.build_payload([keyword], timeframe='today 5-y')
     data = pytrends.interest_over_time()
-    plot_trends(data, f'Interest over Time for {keyword} between {date_start} and {date_end}')
+    data['MA'] = data[keyword].rolling(window=12).mean()
+    plot_trends(data[['MA']], 'Forecasting with Moving Average')
 
 # Streamlit app
 def main():
-    st.title("Interest Over Time")
+    st.title("Remote Work Trends Analysis")
 
-    st.markdown("##### This page allows you to forecast the interest over time for a specific keyword.")
-    
-    pytrends = TrendReq(hl='en-US', tz=360)
-    
-    # Get initial keyword
-    keyword = st.text_input("Enter the keyword you want to search for:")
-    
-    if keyword:
-        # Get the date to analyze
-        date_start = st.text_input("Enter the starting date you want to analyze (YYYY-MM-DD):")
-        
-        if date_start:
-            date_end = st.text_input("Enter the ending date you want to analyze (YYYY-MM-DD):")
-            if date_end:
-                # Get the country to analyze
-                country = st.selectbox("Select the country to analyze", [
-                    "US",  # United States
-                    "CA",  # Canada
-                    "AU",  # Australia
-                    "GB",  # United Kingdom
-                    "DE",  # Germany
-                    "FR",  # France
-                    "IT",  # Italy
-                    "ES",  # Spain
-                    "NL",  # Netherlands
-                    "SE",  # Sweden
-                    "CH",  # Switzerland
-                    "NO",  # Norway
-                    "DK",  # Denmark
-                    "FI",  # Finland
-                    "AT",  # Austria
-                    "BE",  # Belgium
-                    "IE",  # Ireland
-                    "PT",  # Portugal
-                    "GR",  # Greece
-                    "PL",  # Poland
-                ])  # Add more countries as needed
+    analysis_option = st.sidebar.selectbox(
+        "Select analysis option:",
+        ("Regional Interest", "Related Queries", "Forecast Trends")
+    )
 
-                if country:
-                    # Execute analysis
-                    forecast_trends(pytrends, keyword, date_start, date_end, country)
+    if analysis_option == "Regional Interest":
+        regional_interest()
+    elif analysis_option == "Related Queries":
+        related_queries()
+    elif analysis_option == "Forecast Trends":
+        forecast_trends()
+
+    st.sidebar.title("Top Trending Searches Analysis")
+
+    # Get user inputs
+    year = st.sidebar.number_input("Enter the year you want to analyze:", min_value=2004, max_value=2023, step=1)
+    country = st.sidebar.selectbox("Select the country to analyze", [
+        "US", "CA", "AU", "GB", "DE", "FR", "IT", "ES", "NL", "SE", 
+        "CH", "NO", "DK", "FI", "AT", "BE", "IE", "PT", "GR", "PL"
+    ])
+
+    if st.sidebar.button("Fetch Top Trending Searches"):
+        # Fetch top trending searches
+        top_trending = fetch_top_trending(year, country)
+        st.sidebar.write(f"Top Trending Searches in {country} for {year}:")
+        st.sidebar.write(top_trending)
 
 if __name__ == "__main__":
     main()
