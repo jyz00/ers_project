@@ -6,12 +6,12 @@ import requests
 
 headers = {
     'accept': 'application/json, text/plain, */*',
-    'accept-language': 'es-ES,es;q=0.5',
+    'accept-language': 'es-ES,es;q=0.9',
     'content-type': 'application/json;charset=UTF-8',
-    # 'cookie': 'SEARCH_SAMESITE=CgQIw5oB; HSID=Avi2x7iinsjCILQtI; SSID=AZiKdVi7VhF9hew52; APISID=K_m5ilPDQpLZvpli/APiI0ctpuIDU_JZIf; SAPISID=0YqWydt3DmLvdQa5/AcWRt6caniP3Jcx5P; __Secure-1PAPISID=0YqWydt3DmLvdQa5/AcWRt6caniP3Jcx5P; __Secure-3PAPISID=0YqWydt3DmLvdQa5/AcWRt6caniP3Jcx5P; SID=g.a000igjlBsoSDMIyoY3BlJRTfs_l311o-aWJoHdO-7g1gzNUXueh0vrvZZVOIQKoAcGDmgmr6AACgYKAQwSAQASFQHGX2Mig9woKs8LFRnUAwOVn7lxERoVAUF8yKo6ErxF19XNx5Sv62FlUFqO0076; __Secure-1PSID=g.a000igjlBsoSDMIyoY3BlJRTfs_l311o-aWJoHdO-7g1gzNUXuehugZ1Fbe3EpTX0uW7R9toqgACgYKAU4SAQASFQHGX2MiLId_2LkwfwL1SkXo3H7aDhoVAUF8yKr-T-dwi81pbzjkGUcFMp3J0076; __Secure-3PSID=g.a000igjlBsoSDMIyoY3BlJRTfs_l311o-aWJoHdO-7g1gzNUXuehCw4AX5K5yE44x6pg_ar1wQACgYKARcSAQASFQHGX2MiuqFl-FiRUYK7B4UyE0YvFxoVAUF8yKr9oGuCJbWVGLcAGk8yx_RE0076; __Secure-ENID=19.SE=MOECcSVhYNN3cNaMAoc2K8dadvmc5t1utQUh0KYa10aNDqhSMnoy6r8tlCNN-95AEmf0OP2oaviJZaHpqRCICoq2Tr5SVThkbOaTP38Fg743O0I5gqD_8rbC-_ti8oMVJTCuiyEOo1q-47WlwQtar9lfbqa-1l1EdmW2TzNL4BbZ6KdGDAGFaIdBYxdsOcO-zrQf5sb7w3WrDhE; OTZ=7548360_48_52_123900_48_436380; NID=514=HXWyLL7w1vMjEwTHnpeBk4T28WLsaKGyJBSir-rnZhbpxMnEZDwYDFGPlqLfelZ4xeIyyOPEIOb_yLvWOMp9zcMhkBQOgBkvSOjYI8unL3lXghmXBxvVGFAEE9M67QJU3Fu4Wz1LbN3nXKQPZNmBR3N4e4mRo71qd5rlDhudElXsjE9QZWzZDP5HmjqtrpcA4os0Iip73QLWor1_hMmwrodg-yXCS9TKtX240A',
+    # 'cookie': 'SEARCH_SAMESITE=CgQIw5oB; HSID=Avi2x7iinsjCILQtI; SSID=AZiKdVi7VhF9hew52; APISID=K_m5ilPDQpLZvpli/APiI0ctpuIDU_JZIf; SAPISID=0YqWydt3DmLvdQa5/AcWRt6caniP3Jcx5P; __Secure-1PAPISID=0YqWydt3DmLvdQa5/AcWRt6caniP3Jcx5P; __Secure-3PAPISID=0YqWydt3DmLvdQa5/AcWRt6caniP3Jcx5P; __Secure-ENID=19.SE=MOECcSVhYNN3cNaMAoc2K8dadvmc5t1utQUh0KYa10aNDqhSMnoy6r8tlCNN-95AEmf0OP2oaviJZaHpqRCICoq2Tr5SVThkbOaTP38Fg743O0I5gqD_8rbC-_ti8oMVJTCuiyEOo1q-47WlwQtar9lfbqa-1l1EdmW2TzNL4BbZ6KdGDAGFaIdBYxdsOcO-zrQf5sb7w3WrDhE; OTZ=7548360_48_52_123900_48_436380; SID=g.a000jQjlBn3JLt3R7teaobacpU4cZU5_O0vS53W7y8VPGd7AjBw6yN3-xOS1o-XsbRnwlLk0iwACgYKAa8SAQASFQHGX2MiwaK3kHpwVpJSHCrUMe0qaRoVAUF8yKpp9F07Xxrx83rcbYd3-plZ0076; __Secure-1PSID=g.a000jQjlBn3JLt3R7teaobacpU4cZU5_O0vS53W7y8VPGd7AjBw68y8zlsPZSUwK9ixRcOdmmgACgYKARASAQASFQHGX2Mi-6Iw-2eOI2SU6BjIpT0zVxoVAUF8yKq58OuGIx5erEtsFuAVIXi00076; __Secure-3PSID=g.a000jQjlBn3JLt3R7teaobacpU4cZU5_O0vS53W7y8VPGd7AjBw6qYj3DAisIF7h0irwzwRxbAACgYKAe4SAQASFQHGX2MiqFCfKw1xMMvUvAuKW7OlARoVAUF8yKpdgodFrH-SOhdAw4mjnGR20076; NID=514=eJRcRAS-l4YOxiZ4dXYUB4FXbcpM7_H1fGoercKRuAQejhvlWGtBLswj9h1YU-o38OeoxRn1DnzChepuibSnxllCMWHI8msuHKzPDWPD-nb_7VuZMSMTdaz9PIoryBnIHI3kG8bG_odZ10wD06oZ7poUbkZIFLbOarRQZIowcjkJACXHgpKiBfyy9CurjuoSZJCFYvAuZIug8wlRTAv-gS-maj5cNzueCyjLf1zB2_fc6BwjFMk0DqPMJUSL9R1SPTG6ucJdFPHEuqevcbrY7LJEJn3G7eIFFip1',
     'origin': 'https://trends.google.es',
     'priority': 'u=1, i',
-    'referer': 'https://trends.google.es/trends/explore?date=2019-01-01%202019-12-12&geo=US&q=remote&hl=es',
+    'referer': 'https://trends.google.es/trends/explore?date=now%201-d&geo=ES-CE&q=Real&hl=es',
     'sec-ch-ua': '"Chromium";v="124", "Brave";v="124", "Not-A.Brand";v="99"',
     'sec-ch-ua-mobile': '?1',
     'sec-ch-ua-model': '"Nexus 5"',
@@ -23,6 +23,7 @@ headers = {
     'sec-gpc': '1',
     'user-agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36',
 }
+
 
 
 class TrendReq(UTrendReq):
