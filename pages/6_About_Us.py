@@ -7,5 +7,4 @@ st.markdown("""
             
             ##### Junyi Zhao
             ##### Hongwen Liu
-            ##### Liu Cai
             """)

@@ -22,5 +22,9 @@ st.markdown(
     Google Trends es una herramienta de Google que muestra cómo cambian las tendencias de búsqueda en Google con el tiempo. Puedes utilizar Google Trends para analizar la popularidad de ciertos términos de búsqueda en Google.
     ### ¿Qué es Pytrends?
     Pytrends es una librería de Python que permite interactuar con la API de Google Trends. Con Pytrends, puedes obtener datos de Google Trends y analizarlos en Python.
+    ### ¿Qué es TextBlob?
+    TextBlob es una librería de Python que permite realizar análisis de texto. Con TextBlob, puedes realizar tareas como análisis de sentimiento, traducción de texto y más.
+    ### ¿Qué es VanderSentiment?
+    VanderSentiment es una librería de Python que permite realizar análisis de sentimiento en texto. Con VanderSentiment, puedes analizar el sentimiento de un texto y obtener una puntuación de sentimiento.
     """
 )

@@ -6,22 +6,20 @@ import requests
 
 headers = {
     'accept': 'application/json, text/plain, */*',
-    'accept-language': 'es-ES,es;q=0.9',
-    'content-type': 'application/json;charset=UTF-8',
-    # 'cookie': 'SEARCH_SAMESITE=CgQIw5oB; HSID=Avi2x7iinsjCILQtI; SSID=AZiKdVi7VhF9hew52; APISID=K_m5ilPDQpLZvpli/APiI0ctpuIDU_JZIf; SAPISID=0YqWydt3DmLvdQa5/AcWRt6caniP3Jcx5P; __Secure-1PAPISID=0YqWydt3DmLvdQa5/AcWRt6caniP3Jcx5P; __Secure-3PAPISID=0YqWydt3DmLvdQa5/AcWRt6caniP3Jcx5P; __Secure-ENID=19.SE=MOECcSVhYNN3cNaMAoc2K8dadvmc5t1utQUh0KYa10aNDqhSMnoy6r8tlCNN-95AEmf0OP2oaviJZaHpqRCICoq2Tr5SVThkbOaTP38Fg743O0I5gqD_8rbC-_ti8oMVJTCuiyEOo1q-47WlwQtar9lfbqa-1l1EdmW2TzNL4BbZ6KdGDAGFaIdBYxdsOcO-zrQf5sb7w3WrDhE; OTZ=7548360_48_52_123900_48_436380; NID=514=HXWyLL7w1vMjEwTHnpeBk4T28WLsaKGyJBSir-rnZhbpxMnEZDwYDFGPlqLfelZ4xeIyyOPEIOb_yLvWOMp9zcMhkBQOgBkvSOjYI8unL3lXghmXBxvVGFAEE9M67QJU3Fu4Wz1LbN3nXKQPZNmBR3N4e4mRo71qd5rlDhudElXsjE9QZWzZDP5HmjqtrpcA4os0Iip73QLWor1_hMmwrodg-yXCS9TKtX240A; SID=g.a000jwjlBv2G4-rxwt7ygeoXwzI9bdKxCQntGvhLNzHAiCZmXhgbhRAqqeKWLNFYIs6gDbvlvAACgYKARcSAQASFQHGX2MiRWxD7DyXUP7hlBY-rCE8uBoVAUF8yKrerG6VIO3dKHwsbwnvJ9_y0076; __Secure-1PSID=g.a000jwjlBv2G4-rxwt7ygeoXwzI9bdKxCQntGvhLNzHAiCZmXhgb45gnnFNI48_qLA8iKXmhoQACgYKASYSAQASFQHGX2Mi3eVOGR6PQUoa0hhVR1nW4hoVAUF8yKqWp43QMBLvZvicJUhTPEBa0076; __Secure-3PSID=g.a000jwjlBv2G4-rxwt7ygeoXwzI9bdKxCQntGvhLNzHAiCZmXhgbBL5YTKbmSr5uiWKUu9Y_uwACgYKAQwSAQASFQHGX2MiM2amD-hHnVPCH7PyiE1qRhoVAUF8yKpdZ4fKZGiL8ua4pZ0PZO0p0076',
-    'origin': 'https://trends.google.es',
+    'accept-language': 'es-ES,es;q=0.7',
+    # 'cookie': 'SEARCH_SAMESITE=CgQIw5oB; HSID=Avi2x7iinsjCILQtI; SSID=AZiKdVi7VhF9hew52; APISID=K_m5ilPDQpLZvpli/APiI0ctpuIDU_JZIf; SAPISID=0YqWydt3DmLvdQa5/AcWRt6caniP3Jcx5P; __Secure-1PAPISID=0YqWydt3DmLvdQa5/AcWRt6caniP3Jcx5P; __Secure-3PAPISID=0YqWydt3DmLvdQa5/AcWRt6caniP3Jcx5P; NID=514=VIwPMDaDOafbKNJoFlbAuVg7tilByKzkSvDcX2OJyDiTaRat9sYjRTPvTX5RozFRxZ9O1YCXVNzesOl8qzOokqLHRdpWnia5JI67z1y4ICdNnwEw6GZT4aCAlFzZA-1PDIkNJxbyhQwv5PG9UJH5RK-CN1Cy4oMMIlCjBahpXC8',
     'priority': 'u=1, i',
-    'referer': 'https://trends.google.es/trends/explore?date=now%201-d&geo=ES&q=loki&hl=es',
-    'sec-ch-ua': '"Chromium";v="124", "Brave";v="124", "Not-A.Brand";v="99"',
-    'sec-ch-ua-mobile': '?1',
-    'sec-ch-ua-model': '"Nexus 5"',
-    'sec-ch-ua-platform': '"Android"',
-    'sec-ch-ua-platform-version': '"6.0"',
+    'referer': 'https://trends.google.es/trends/explore?date=now%201-d&geo=ES&q=lunch&hl=es',
+    'sec-ch-ua': '"Brave";v="125", "Chromium";v="125", "Not.A/Brand";v="24"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-model': '""',
+    'sec-ch-ua-platform': '"Windows"',
+    'sec-ch-ua-platform-version': '"15.0.0"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
     'sec-gpc': '1',
-    'user-agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
 }
 
 
